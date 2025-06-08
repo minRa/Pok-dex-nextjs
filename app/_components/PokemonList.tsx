@@ -30,7 +30,7 @@ export async function PokemonList({
     Array.isArray(searchParams.page)
       ? searchParams.page[0] ?? "1"
       : searchParams.page ?? "1",
-    1
+    10
   );
 
   const allPokemon: FullPokemon[] = await getPokemonList();
