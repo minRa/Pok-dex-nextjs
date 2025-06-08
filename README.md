@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokédex - Original 151 Pokémon
 
-## Getting Started
+A web app built with Next.js (App Router) that displays the original 151 Pokémon. You can browse, search, sort, and view details for each Pokémon.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- ✅ Server-side rendering (SSR) using Next.js App Router
+- 🔍 Search by name or number
+- 🔃 Sort by name or number (ascending/descending)
+- 📄 Pagination (16 Pokémon per page)
+- 📱 Responsive UI
+- 🔗 Detail pages for each Pokémon
+- 🌐 SEO-friendly with per-page metadata using `generateMetadata`
+
+## Tech Stack
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- PokéAPI
+
+## How to Run
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/your-username/pokedex-app.git
+   cd pokedex-app
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Visit `http://localhost:3000` in your browser.
+
+## Project Structure
+
+```
+app/
+  ├─ page.tsx               # Home page with search/sort bar and list
+  ├─ pokemon/[id]/page.tsx  # Detail page for each Pokémon (with SEO metadata)
+  └─ _components/           # UI components (Card, List, Pagination, etc.)
+
+lib/
+  └─ fetchPokemon.ts        # API logic to get Pokémon data
+
+types/
+  └─ pokemon.d.ts           # Type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Data is fetched from [https://pokeapi.co](https://pokeapi.co).
+- The UI is styled with Tailwind CSS.
+- Uses debounced search and URL query params for a smooth UX.
+- Metadata is automatically injected using `generateMetadata` for SEO.
