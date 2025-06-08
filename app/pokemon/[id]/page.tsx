@@ -2,9 +2,33 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getPokemonDetail } from "../../lib";
+import { Metadata } from "next";
 
 interface PokemonDetailPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PokemonDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const data = await getPokemonDetail(id);
+
+  if (!data?.name) {
+    return {
+      title: "Pokémon Not Found | Pokédex",
+      description: "The requested Pokémon could not be found in the Pokédex.",
+    };
+  }
+
+  return {
+    title: `${data.name} | Pokédex #${data.id}`,
+    description: `Details and stats for ${
+      data.name
+    }, a Pokémon of type(s): ${data.types
+      .map((t) => t.type.name)
+      .join(", ")}. View height, weight, image, and more.`,
+  };
 }
 
 export default async function PokemonDetailPage({

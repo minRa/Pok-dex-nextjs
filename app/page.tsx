@@ -1,9 +1,20 @@
 import { SortAndSearchBar, PokemonList } from "./_components";
 
 export const generateMetadata = () => ({
-  title: "Pokédex | Original 151 Pokémon",
+  title: "Pokédex | Explore All 151 Original Pokémon by Name, Type & ID",
   description:
-    "Explore the original 151 Pokémon with names, types, and images.",
+    "Browse the original 151 Pokémon from the Kanto region. Sort, search, and view detailed stats, types, and images using this fast, SEO-optimized Pokédex.",
+  keywords: [
+    "Pokédex",
+    "Pokémon",
+    "original 151 Pokémon",
+    "Kanto Pokémon",
+    "search Pokémon",
+    "Pokémon stats",
+    "Pokémon types",
+    "Next.js Pokédex",
+    "Pokémon list",
+  ],
 });
 
 export default async function HomePage({
